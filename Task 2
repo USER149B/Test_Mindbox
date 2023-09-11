@@ -1,0 +1,10 @@
+from pyspark.sql import SparkSession
+
+def get_product_category_pairs(products_df, categories_df):
+    # Выполняем операцию объединения двух датафреймов по столбцу "product_id"
+    joined_df = products_df.join(categories_df, "product_id", "left_outer")
+    
+    # Выбираем нужные столбцы из объединенного датафрейма
+    result_df = joined_df.select("product_name", "category_name")
+    
+    return result_df
