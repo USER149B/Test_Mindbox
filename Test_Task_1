@@ -1,0 +1,23 @@
+#тестирования библиотеки
+import unittest
+
+class GeometryTestCase(unittest.TestCase):
+    def test_circle_area(self):
+        radius = 5
+        expected_area = math.pi * radius ** 2
+        self.assertEqual(Geometry.circle_area(radius), expected_area)
+
+    def test_triangle_area(self):
+        side1 = 3
+        side2 = 4
+        side3 = 5
+        half_perimeter = (side1 + side2 + side3) / 2
+        expected_area = math.sqrt(half_perimeter * (half_perimeter - side1) * (half_perimeter - side2) * (half_perimeter - side3))
+        self.assertEqual(Geometry.triangle_area(side1, side2, side3), expected_area)
+
+    def test_is_right_triangle(self):
+        self.assertTrue(Geometry.is_right_triangle(3, 4, 5))
+        self.assertFalse(Geometry.is_right_triangle(3, 4, 6))
+
+if __name__ == '__main__':
+    unittest.main()
